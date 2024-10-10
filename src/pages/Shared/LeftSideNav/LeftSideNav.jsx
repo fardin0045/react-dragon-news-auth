@@ -1,4 +1,4 @@
-
+import { MdOutlinePublishedWithChanges } from "react-icons/md";
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,19 @@ const LeftSideNav = () => {
                 >{category.name}</Link>)
             }
             { 
-                news.map(newNews => <p key={newNews._id} className='text-2xl font-semibold'>{newNews.title}</p>
+               news.slice(0,3).map(newNews =>
+    
+                <div  key={newNews._id} 
+                className='rounded-lg font-semibold space-y-2'>
+                <img className='rounded-xl mb-2' src={newNews.image_url} alt="" />
+                {newNews.title}
+                <div className='my-4 flex mt-5 gap-4 font-light'>
+                <p>{newNews.author.name} </p>
+                <p className="flex gap-3"><MdOutlinePublishedWithChanges />{newNews.author.published_date}</p>
+                <hr />
+                </div>
+                
+                </div>
                 )
             }
         </div>

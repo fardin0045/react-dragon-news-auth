@@ -12,13 +12,13 @@ const Home = () => {
             <BreakingNews></BreakingNews>
             <Navbar></Navbar>
             <div className="grid  grid-cols-1 md:grid-cols-4 gap-6">
-                <div  className="border">
+                <div  className="">
                     <LeftSideNav></LeftSideNav>
                 </div>
                 <div className="lg:col-span-2 border">
                     <h2 className="text-4xl">News Coming soon</h2>
                 </div>
-                <div className="border">
+                <div className="">
                     <RightSideNav></RightSideNav>
                 </div>
             </div>
