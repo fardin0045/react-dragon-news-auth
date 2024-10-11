@@ -28,7 +28,7 @@ const LeftSideNav = () => {
                 >{category.name}</Link>)
             }
             { 
-               news.slice(0,3).map(newNews =>
+               news.slice(0,4).map(newNews =>
     
                 <div  key={newNews._id} 
                 className='rounded-lg font-semibold space-y-2'>
