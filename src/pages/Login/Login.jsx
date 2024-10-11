@@ -1,14 +1,45 @@
-import React from 'react';
-import Navbar from '../Shared/Navbar/Navbar';
+
 import { Link } from 'react-router-dom';
+import Navbar from '../Shared/Navbar/Navbar';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const Login = () => {
-
-    const handleLogin = e =>{
+    const {signIn} = useContext(AuthContext);
+    
+    const handleLogin = (e) => {
         e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        console.log(form.get('password'))
+        const form = e.target; // Access the form
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        console.log(email, password);
+        
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
+                form.reset(); // Reset the form fields
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
+    
+    // const handleLogin = e =>{
+    //     e.preventDefault();
+    //     const form = new FormData(e.currentTarget);
+    //     const email = form.get('email');
+    //     const password = form.get('password');
+    //     console.log(email,password);
+    //     signIn(email, password)
+    //     .then(result =>{
+    //         console.log(result.user);
+    //         form.reset();
+    //     })
+    //     .catch(error =>{
+    //         console.log(error);
+    //     })
+    // }
 
     return (
         <div>
@@ -21,7 +52,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold text-[#403F3F]">Email Address </span>
                                 </label>
-                                <input name='email' type="email" placeholder="email" className="input input-bordered" required />
+                                <input name='email' type="email" placeholder="email" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
